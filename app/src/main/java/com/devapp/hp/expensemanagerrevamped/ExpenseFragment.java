@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import static com.devapp.hp.expensemanagerrevamped.MainActivity.Expense;
 import static com.devapp.hp.expensemanagerrevamped.MainActivity.ExpenseName;
+import static com.devapp.hp.expensemanagerrevamped.R.styleable.AlertDialog;
 
 /**
  * Created by HP on 07-06-2017.
@@ -69,7 +70,6 @@ public class ExpenseFragment extends Fragment {
 
                                 ExpenseName.add(name.getText().toString());
                                 Expense.add(Integer.parseInt(amount.getText().toString()));
-                                //Expense.add(Integer.valueOf(amount.toString()));
 
                                 adapter.notifyDataSetChanged();
                             }
