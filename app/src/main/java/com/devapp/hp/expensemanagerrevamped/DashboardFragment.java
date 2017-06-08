@@ -18,6 +18,8 @@ public class DashboardFragment extends Fragment {
 
     TextView totalAmount;
 
+
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -26,7 +28,7 @@ public class DashboardFragment extends Fragment {
 
         totalAmount = (TextView) v.findViewById(R.id.TotalAmount);
 
-        int sum = 0;
+        float sum = 0;
 
         for(int i =0; i < Expense.size(); i++){
 

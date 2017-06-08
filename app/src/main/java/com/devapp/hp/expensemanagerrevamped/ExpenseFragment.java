@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import static com.devapp.hp.expensemanagerrevamped.MainActivity.Expense;
 import static com.devapp.hp.expensemanagerrevamped.MainActivity.ExpenseName;
+import static com.devapp.hp.expensemanagerrevamped.MainActivity.myDatabase;
 import static com.devapp.hp.expensemanagerrevamped.R.styleable.AlertDialog;
 
 /**
@@ -42,7 +43,7 @@ public class ExpenseFragment extends Fragment {
 
         rv.setLayoutManager(layoutManager);
 
-        final RVAdapter adapter = new RVAdapter();
+        final  RVAdapter adapter = new RVAdapter();
 
         rv.setAdapter(adapter);
 
@@ -69,7 +70,9 @@ public class ExpenseFragment extends Fragment {
 
 
                                 ExpenseName.add(name.getText().toString());
-                                Expense.add(Integer.parseInt(amount.getText().toString()));
+                                Expense.add(Float.parseFloat(amount.getText().toString()));
+
+                                myDatabase.execSQL("INSERT INTO expenses(name,amount) VALUES ('" + name.getText().toString() + "', " + amount.getText().toString() + ") ");
 
                                 adapter.notifyDataSetChanged();
                             }

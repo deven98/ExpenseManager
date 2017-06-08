@@ -33,7 +33,7 @@
         android:layout_marginTop="8dp"
         android:text="TextView"
         android:textAlignment="center"
-        android:textColor="#000000"
+        android:textColor="#ffffff"
         android:textSize="40sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/imageView2"
@@ -52,7 +52,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginTop="26dp"
         android:text="Total Spent :"
-        android:textColor="#000000"
+        android:textColor="#ffffff"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/TotalAmount"
@@ -60,6 +60,6 @@
         app:layout_constraintLeft_toLeftOf="@+id/imageView2"
         app:layout_constraintRight_toRightOf="@+id/imageView2"
         app:layout_constraintTop_toTopOf="@+id/imageView2"
-        tools:text="Total Spent :"
-        tools:layout_editor_absoluteY="42dp" />
+        tools:layout_editor_absoluteY="42dp"
+        tools:text="Total Spent :" />
 </android.support.constraint.ConstraintLayout>
