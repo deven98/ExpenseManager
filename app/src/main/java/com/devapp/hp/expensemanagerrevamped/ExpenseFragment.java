@@ -68,13 +68,16 @@ public class ExpenseFragment extends Fragment {
                                 EditText name = (EditText) ((Dialog)dialog).findViewById(R.id.dialogName);
                                 EditText amount = (EditText) ((Dialog)dialog).findViewById(R.id.dialogAmount);
 
-
+                                if(name.getText().toString().matches("") || amount.getText().toString().matches("")){
+                                    Toast.makeText(v.getContext(), "Fields cannot be empty", Toast.LENGTH_SHORT).show();
+                                }
+                                else{
                                 ExpenseName.add(name.getText().toString());
                                 Expense.add(Float.parseFloat(amount.getText().toString()));
 
                                 myDatabase.execSQL("INSERT INTO expenses(name,amount) VALUES ('" + name.getText().toString() + "', " + amount.getText().toString() + ") ");
 
-                                adapter.notifyDataSetChanged();
+                                adapter.notifyDataSetChanged();}
                             }
                         }).show();
 
