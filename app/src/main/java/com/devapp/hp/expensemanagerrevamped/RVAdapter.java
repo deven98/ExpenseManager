@@ -1,15 +1,19 @@
 package com.devapp.hp.expensemanagerrevamped;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import static com.devapp.hp.expensemanagerrevamped.MainActivity.Expense;
 import static com.devapp.hp.expensemanagerrevamped.MainActivity.ExpenseName;
+import static com.devapp.hp.expensemanagerrevamped.MainActivity.myDatabase;
 
 /**
  * Created by HP on 07-06-2017.
@@ -43,6 +47,24 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.PersonViewHolder> 
                 public void onClick(View v) {
                     final int position = getAdapterPosition();
                     //Toast.makeText(itemView.getContext(), "Clicked " + position, Toast.LENGTH_SHORT).show();
+
+                    new AlertDialog.Builder(itemView.getContext())
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .setTitle("Delete?")
+                            .setPositiveButton("Accept", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+
+                                    myDatabase.execSQL("DELETE FROM expenses WHERE name='"+ExpenseName.get(position)+"' AND amount='"+Expense.get(position)+"'");
+
+                                    ExpenseName.remove(position);
+                                    Expense.remove(position);
+                                    notifyDataSetChanged();
+
+                                }
+                            })
+                            .setNegativeButton("Cancel",null)
+                            .show();
 
                 }
             });
